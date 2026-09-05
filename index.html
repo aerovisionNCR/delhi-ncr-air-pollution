@@ -1,1 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breathe Easy Delhi | AI Pollution Forecast</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial, sans-serif;
+background:#08111f;
+color:#eaf2ff;
+line-height:1.5;
+}
+
+header{
+background:#0d1b2e;
+padding:18px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #24354d;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.logo span{color:#43d17a}
+
+nav a{
+color:#b9c7d9;
+text-decoration:none;
+margin-left:22px;
+font-size:14px;
+}
+
+nav a:hover{color:#43d17a}
+
+.container{
+width:88%;
+max-width:1250px;
+margin:auto;
+}
+
+.hero{
+padding:55px 0 35px;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+.hero h1 span{color:#43d17a}
+
+.hero p{
+color:#9eafc4;
+max-width:700px;
+font-size:17px;
+}
+
+.status{
+display:inline-block;
+margin-top:20px;
+padding:8px 15px;
+border-radius:20px;
+background:#193b31;
+color:#54df8b;
+font-size:13px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:15px;
+margin:25px 0;
+}
+
+.card{
+background:#0e1c2e;
+border:1px solid #24354d;
+border-radius:14px;
+padding:20px;
+}
+
+.card small{
+color:#8fa2b8;
+}
+
+.value{
+font-size:28px;
+font-weight:bold;
+margin:7px 0;
+}
+
+.unit{
+color:#8fa2b8;
+font-size:12px;
+}
+
+.aqi{
+font-size:42px;
+color:#ff9f43;
+}
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-top:20px;
+}
+
+.panel{
+background:#0e1c2e;
+border:1px solid #24354d;
+border-radius:16px;
+padding:24px;
+}
+
+.panel h2{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.muted{
+color:#8fa2b8;
+font-size:13px;
+}
+
+.chart{
+height:230px;
+display:flex;
+align-items:end;
+gap:10px;
+padding:25px 10px 5px;
+}
+
+.bar{
+flex:1;
+background:#43d17a;
+border-radius:6px 6px 0 0;
+min-height:30px;
+position:relative;
+}
+
+.bar span{
+position:absolute;
+top:-22px;
+font-size:11px;
+color:#aab9ca;
+}
+
+.forecast{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.forecast div{
+background:#13243a;
+padding:14px;
+border-radius:10px;
+}
+
+.forecast b{
+display:block;
+font-size:20px;
+margin-top:5px;
+}
+
+.map{
+height:350px;
+background:
+radial-gradient(circle at 50% 45%,#304d67 0 5%,transparent 6%),
+linear-gradient(135deg,#102b3d,#132c28);
+border-radius:12px;
+position:relative;
+overflow:hidden;
+margin-top:20px;
+}
+
+.map:before{
+content:"DELHI NCR";
+position:absolute;
+left:40%;
+top:43%;
+font-size:28px;
+font-weight:bold;
+color:#ffffff30;
+}
+
+.marker{
+position:absolute;
+width:14px;
+height:14px;
+border-radius:50%;
+background:#ff9f43;
+box-shadow:0 0 0 7px #ff9f4325;
+}
+
+.m1{left:48%;top:42%}
+.m2{left:63%;top:35%}
+.m3{left:70%;top:53%}
+.m4{left:38%;top:58%}
+.m5{left:55%;top:65%}
+
+.location-list{
+margin-top:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.location{
+background:#13243a;
+padding:12px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+}
+
+.good{color:#43d17a}
+.warning{color:#ffb347}
+.danger{color:#ff6b6b}
+
+.factor{
+margin-top:14px;
+}
+
+.factor-title{
+display:flex;
+justify-content:space-between;
+margin-bottom:5px;
+font-size:13px;
+}
+
+.progress{
+height:7px;
+background:#23354b;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress i{
+display:block;
+height:100%;
+background:#43d17a;
+border-radius:10px;
+}
+
+.alert{
+background:#332515;
+border:1px solid #79501f;
+padding:16px;
+border-radius:12px;
+margin-top:15px;
+}
+
+.iot{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:15px;
+}
+
+.device{
+background:#13243a;
+padding:16px;
+border-radius:12px;
+}
+
+.online{
+color:#43d17a;
+font-size:12px;
+}
+
+footer{
+margin-top:50px;
+padding:30px;
+text-align:center;
+background:#0d1b2e;
+color:#71859d;
+font-size:13px;
+}
+
+@media(max-width:900px){
+.cards{grid-template-columns:repeat(3,1fr)}
+.grid{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+.hero h1{font-size:30px}
+.cards{grid-template-columns:repeat(2,1fr)}
+.forecast{grid-template-columns:repeat(2,1fr)}
+.iot{grid-template-columns:1fr}
+nav{display:none}
+.container{width:92%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🌿 Breathe Easy <span>Delhi</span></div>
+
+<nav>
+<a href="#dashboard">Dashboard</a>
+<a href="#forecast">Forecast</a>
+<a href="#map">NCR Map</a>
+<a href="#iot">IoT</a>
+</nav>
+</header>
+
+<main class="container">
+
+<section class="hero">
+<div class="status">● SYSTEM ONLINE • AI FORECASTING ACTIVE</div>
+
+<h1>
+Air Pollution–Weather<br>
+<span>Coupled Forecasting System</span>
+</h1>
+
+<p>
+AI-powered air pollution monitoring and forecasting system
+designed for Delhi NCR. It combines pollution and weather
+conditions to predict future air quality.
+</p>
+</section>
+
+<section id="dashboard">
+
+<div class="cards">
+
+<div class="card">
+<small>Current AQI</small>
+<div class="value aqi">187</div>
+<div class="warning">Very Poor</div>
+</div>
+
+<div class="card">
+<small>PM2.5</small>
+<div class="value">112</div>
+<div class="unit">µg/m³</div>
+</div>
+
+<div class="card">
+<small>PM10</small>
+<div class="value">198</div>
+<div class="unit">µg/m³</div>
+</div>
+
+<div class="card">
+<small>Temperature</small>
+<div class="value">29°C</div>
+<div class="unit">Current</div>
+</div>
+
+<div class="card">
+<small>Humidity</small>
+<div class="value">72%</div>
+<div class="unit">Relative</div>
+</div>
+
+<div class="card">
+<small>Wind</small>
+<div class="value">4.2</div>
+<div class="unit">km/h</div>
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="panel" id="forecast">
+
+<h2>📈 24-Hour PM2.5 Forecast</h2>
+<p class="muted">AI prediction based on pollution + weather conditions</p>
+
+<div class="chart">
+<div class="bar" style="height:45%"><span>98</span></div>
+<div class="bar" style="height:52%"><span>105</span></div>
+<div class="bar" style="height:58%"><span>112</span></div>
+<div class="bar" style="height:64%"><span>120</span></div>
+<div class="bar" style="height:70%"><span>130</span></div>
+<div class="bar" style="height:76%"><span>140</span></div>
+<div class="bar" style="height:82%"><span>150</span></div>
+<div class="bar" style="height:88%"><span>160</span></div>
+</div>
+
+<div class="forecast">
+
+<div>
+<small>1 Hour</small>
+<b>118</b>
+<span class="muted">PM2.5</span>
+</div>
+
+<div>
+<small>6 Hours</small>
+<b>130</b>
+<span class="muted">PM2.5</span>
+</div>
+
+<div>
+<small>12 Hours</small>
+<b>145</b>
+<span class="muted">PM2.5</span>
+</div>
+
+<div>
+<small>24 Hours</small>
+<b>160</b>
+<span class="muted">PM2.5</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>🌦️ Weather Conditions</h2>
+<p class="muted">Factors affecting pollution</p>
+
+<div class="factor">
+<div class="factor-title">
+<span>Humidity</span><b>72%</b>
+</div>
+<div class="progress"><i style="width:72%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Wind Speed</span><b>4.2 km/h</b>
+</div>
+<div class="progress"><i style="width:35%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Atmospheric Mixing</span><b>Low</b>
+</div>
+<div class="progress"><i style="width:28%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Rainfall</span><b>0 mm</b>
+</div>
+<div class="progress"><i style="width:5%"></i></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="grid" id="map">
+
+<div class="panel">
+
+<h2>🗺️ Delhi NCR Pollution Map</h2>
+<p class="muted">Current pollution status by location</p>
+
+<div class="map">
+
+<div class="marker m1"></div>
+<div class="marker m2"></div>
+<div class="marker m3"></div>
+<div class="marker m4"></div>
+<div class="marker m5"></div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>📍 NCR Locations</h2>
+
+<div class="location-list">
+
+<div class="location">
+<span>Delhi</span>
+<b class="danger">187</b>
+</div>
+
+<div class="location">
+<span>Noida</span>
+<b class="danger">201</b>
+</div>
+
+<div class="location">
+<span>Gurugram</span>
+<b class="warning">165</b>
+</div>
+
+<div class="location">
+<span>Ghaziabad</span>
+<b class="danger">210</b>
+</div>
+
+<div class="location">
+<span>Faridabad</span>
+<b class="warning">172</b>
+</div>
+
+<div class="location">
+<span>Greater Noida</span>
+<b class="danger">205</b>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="grid">
+
+<div class="panel">
+
+<h2>🤖 AI Prediction</h2>
+<p class="muted">
+Machine learning model used for pollution forecasting
+</p>
+
+<div class="alert">
+<b>⚠️ Pollution expected to increase</b>
+<br>
+<span class="muted">
+Low wind speed and high humidity may contribute to
+pollutant accumulation during the next few hours.
+</span>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Existing PM2.5</span><b>High Impact</b>
+</div>
+<div class="progress"><i style="width:90%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Wind Speed</span><b>High Impact</b>
+</div>
+<div class="progress"><i style="width:82%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Humidity</span><b>Medium Impact</b>
+</div>
+<div class="progress"><i style="width:65%"></i></div>
+</div>
+
+<div class="factor">
+<div class="factor-title">
+<span>Temperature</span><b>Low Impact</b>
+</div>
+<div class="progress"><i style="width:35%"></i></div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>🎯 Prediction Confidence</h2>
+
+<div style="text-align:center;padding:30px 0">
+
+<div style="font-size:55px;font-weight:bold;color:#43d17a">
+87%
+</div>
+
+<p class="muted">Model Confidence</p>
+
+<br>
+
+<b>XGBoost</b>
+<p class="muted">Primary prediction model</p>
+
+<br>
+
+<b>LSTM</b>
+<p class="muted">Time-series forecasting model</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="panel" id="iot" style="margin-top:20px">
+
+<h2>🔌 IoT Sensor Monitoring</h2>
+
+<p class="muted">
+ESP32-based environmental monitoring nodes
+</p>
+
+<div class="iot">
+
+<div class="device">
+<b>DELHI_SENSOR_001</b>
+<p class="online">● Online</p>
+<br>
+PM2.5: 112 µg/m³<br>
+PM10: 198 µg/m³<br>
+Temperature: 29°C<br>
+Humidity: 72%
+</div>
+
+<div class="device">
+<b>NOIDA_SENSOR_001</b>
+<p class="online">● Online</p>
+<br>
+PM2.5: 124 µg/m³<br>
+PM10: 210 µg/m³<br>
+Temperature: 30°C<br>
+Humidity: 69%
+</div>
+
+<div class="device">
+<b>GURUGRAM_SENSOR_001</b>
+<p class="online">● Online</p>
+<br>
+PM2.5: 98 µg/m³<br>
+PM10: 175 µg/m³<br>
+Temperature: 28°C<br>
+Humidity: 70%
+</div>
+
+</div>
+
+</section>
+
+<section class="panel" style="margin-top:20px">
+
+<h2>⚙️ How Our System Works</h2>
+
+<div class="forecast">
+
+<div>
+<b>1️⃣</b>
+<br>Collect Data
+<br><span class="muted">Pollution + Weather</span>
+</div>
+
+<div>
+<b>2️⃣</b>
+<br>Process Data
+<br><span class="muted">Clean + Combine</span>
+</div>
+
+<div>
+<b>3️⃣</b>
+<br>AI Prediction
+<br><span class="muted">XGBoost + LSTM</span>
+</div>
+
+<div>
+<b>4️⃣</b>
+<br>Show Forecast
+<br><span class="muted">Dashboard + Alerts</span>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+🌿 Breathe Easy Delhi
+<br>
+Air Pollution–Weather Coupled Forecasting System
+<br><br>
+Smart India Hackathon • Delhi NCR Focus
+</footer>
+
+</body>
+</html>
