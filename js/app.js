@@ -180,3 +180,31 @@ if (menuToggle && mainNav) {
     });
 
 });
+// =====================================
+// AERO VISION PREMIUM MENU
+// =====================================
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", () => {
+
+        menuToggle.classList.toggle("active");
+        mainNav.classList.toggle("menu-open");
+
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            menuToggle.classList.remove("active");
+            mainNav.classList.remove("menu-open");
+
+        });
+
+    });
+
+}
