@@ -994,3 +994,69 @@ footer p {
         font-size: 34px;
     }
 }
+/* ================================
+   PAGE TO PAGE ANIMATION
+================================ */
+
+body {
+    opacity: 0;
+    animation: pageEnter 0.7s ease forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth page exit */
+body.page-exit {
+    animation: pageExit 0.45s ease forwards;
+}
+
+@keyframes pageExit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+}
+
+/* Navbar links */
+.navbar nav a {
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.navbar nav a:hover {
+    transform: translateY(-2px);
+}
+
+/* Section entrance */
+.section,
+.hero,
+.page-header,
+.cta {
+    animation: contentReveal 0.8s ease both;
+}
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
