@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AERO VISION | Live Monitoring</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🌿 <span>AERO VISION</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="monitoring.html" class="active">Monitoring</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="map.html">NCR Map</a>
+        <a href="iot.html">IoT</a>
+        <a href="weather.html">Weather</a>
+        <a href="about.html">About</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+
+        <p>REAL-TIME AIR QUALITY</p>
+
+        <h1>Live Monitoring</h1>
+
+        <p>
+            Monitor air-quality and environmental parameters
+            collected from the IoT sensor network.
+        </p>
+
+    </section>
+
+
+    <!-- STATUS -->
+    <section class="section">
+
+        <div class="data-status">
+
+            <div>
+                <span class="status-dot"></span>
+                Sensor Network Status
+            </div>
+
+            <strong>WAITING FOR CONNECTION</strong>
+
+        </div>
+
+
+        <!-- MAIN VALUES -->
+        <div class="card-grid">
+
+            <div class="card monitoring-card">
+
+                <div class="card-icon">🌫️</div>
+
+                <h3>Air Quality Index</h3>
+
+                <div class="value">
+                    --
+                </div>
+
+                <p>AQI</p>
+
+            </div>
+
+
+            <div class="card monitoring-card">
+
+                <div class="card-icon">🫁</div>
+
+                <h3>PM2.5</h3>
+
+                <div class="value">
+                    --
+                </div>
+
+                <p>µg/m³</p>
+
+            </div>
+
+
+            <div class="card monitoring-card">
+
+                <div class="card-icon">🏭</div>
+
+                <h3>PM10</h3>
+
+                <div class="value">
+                    --
+                </div>
+
+                <p>µg/m³</p>
+
+            </div>
+
+
+            <div class="card monitoring-card">
+
+                <div class="card-icon">☁️</div>
+
+                <h3>CO</h3>
+
+                <div class="value">
+                    --
+                </div>
+
+                <p>ppm</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ENVIRONMENTAL PARAMETERS -->
+    <section class="section dark-section">
+
+        <div class="section-title">
+
+            <p>ENVIRONMENTAL DATA</p>
+
+            <h2>Environmental Parameters</h2>
+
+        </div>
+
+
+        <div class="parameter-grid">
+
+            <div class="parameter-card">
+
+                <span>🌡️</span>
+
+                <div>
+                    <h3>Temperature</h3>
+                    <strong>-- °C</strong>
+                </div>
+
+            </div>
+
+
+            <div class="parameter-card">
+
+                <span>💧</span>
+
+                <div>
+                    <h3>Humidity</h3>
+                    <strong>-- %</strong>
+                </div>
+
+            </div>
+
+
+            <div class="parameter-card">
+
+                <span>💨</span>
+
+                <div>
+                    <h3>Wind Speed</h3>
+                    <strong>-- km/h</strong>
+                </div>
+
+            </div>
+
+
+            <div class="parameter-card">
+
+                <span>🧭</span>
+
+                <div>
+                    <h3>Wind Direction</h3>
+                    <strong>--</strong>
+                </div>
+
+            </div>
+
+
+            <div class="parameter-card">
+
+                <span>🌧️</span>
+
+                <div>
+                    <h3>Rainfall</h3>
+                    <strong>-- mm</strong>
+                </div>
+
+            </div>
+
+
+            <div class="parameter-card">
+
+                <span>☀️</span>
+
+                <div>
+                    <h3>Solar Radiation</h3>
+                    <strong>-- W/m²</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- POLLUTANTS -->
+    <section class="section">
+
+        <div class="section-title">
+
+            <p>POLLUTION PARAMETERS</p>
+
+            <h2>Pollutant Monitoring</h2>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>PM2.5</td>
+                        <td>--</td>
+                        <td>µg/m³</td>
+                        <td>Waiting</td>
+                    </tr>
+
+                    <tr>
+                        <td>PM10</td>
+                        <td>--</td>
+                        <td>µg/m³</td>
+                        <td>Waiting</td>
+                    </tr>
+
+                    <tr>
+                        <td>NO₂</td>
+                        <td>--</td>
+                        <td>ppb</td>
+                        <td>Waiting</td>
+                    </tr>
+
+                    <tr>
+                        <td>O₃</td>
+                        <td>--</td>
+                        <td>ppb</td>
+                        <td>Waiting</td>
+                    </tr>
+
+                    <tr>
+                        <td>CO</td>
+                        <td>--</td>
+                        <td>ppm</td>
+                        <td>Waiting</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+    <section class="info-box">
+
+        <div class="info-icon">📡</div>
+
+        <div>
+
+            <h3>IoT Connection Pending</h3>
+
+            <p>
+                Live values will appear here after the ESP32-based
+                sensor network is connected to the cloud database
+                and API.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>AERO VISION</strong>
+
+        <p>
+            Air Pollution–Weather Coupled Forecasting System
+        </p>
+    </div>
+
+    <p>
+        © 2026 AERO VISION | SIH Project
+    </p>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
