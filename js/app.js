@@ -120,3 +120,42 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(checkSystem, 30000);
 
 });
+// =====================================
+// AERO VISION PAGE TRANSITION
+// =====================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const links = document.querySelectorAll("a[href]");
+
+    links.forEach(link => {
+
+        const url = link.getAttribute("href");
+
+        // Only internal HTML pages
+        if (
+            url &&
+            url.endsWith(".html") &&
+            !url.startsWith("http") &&
+            !url.startsWith("#")
+        ) {
+
+            link.addEventListener("click", function (e) {
+
+                e.preventDefault();
+
+                const target = this.href;
+
+                document.body.classList.add("page-exit");
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 400);
+
+            });
+
+        }
+
+    });
+
+});
