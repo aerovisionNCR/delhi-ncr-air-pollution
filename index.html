@@ -4,405 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AERO VISION | Delhi NCR Air Intelligence</title>
+    <title>AERO VISION | Air Pollution Forecast</title>
 
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* INDEX PAGE EXTRA STYLE */
-        .hero {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before,
-        .hero::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: 0.18;
-            pointer-events: none;
-        }
-
-        .hero::before {
-            width: 300px;
-            height: 300px;
-            background: #5ee6a8;
-            top: -100px;
-            right: -80px;
-            animation: floatOrb 6s ease-in-out infinite;
-        }
-
-        .hero::after {
-            width: 250px;
-            height: 250px;
-            background: #4da6ff;
-            bottom: -100px;
-            left: -80px;
-            animation: floatOrb 7s ease-in-out infinite reverse;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid rgba(94,230,168,0.35);
-            border-radius: 30px;
-            color: #5ee6a8;
-            background: rgba(94,230,168,0.07);
-            margin-bottom: 20px;
-            animation: badgePulse 2.5s infinite;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 6vw, 78px);
-            line-height: 1.05;
-        }
-
-        .hero h1 span {
-            color: #5ee6a8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 28px;
-        }
-
-        .hero-buttons a {
-            text-decoration: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: 50px;
-        }
-
-        .stat-card {
-            padding: 25px;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.035);
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
-            transition: 0.35s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px);
-            border-color: #5ee6a8;
-            box-shadow: 0 15px 35px rgba(94,230,168,0.12);
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #5ee6a8;
-        }
-
-        .stat-label {
-            margin-top: 7px;
-            opacity: 0.7;
-        }
-
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .architecture-box {
-            animation: architectureFloat 4s ease-in-out infinite;
-        }
-
-        .architecture-box:nth-child(2) {
-            animation-delay: .4s;
-        }
-
-        .architecture-box:nth-child(3) {
-            animation-delay: .8s;
-        }
-
-        .architecture-box:nth-child(4) {
-            animation-delay: 1.2s;
-        }
-
-        @keyframes floatOrb {
-            0%,100% {
-                transform: translate(0,0) scale(1);
-            }
-            50% {
-                transform: translate(-25px,25px) scale(1.12);
-            }
-        }
-
-        @keyframes badgePulse {
-            0%,100% {
-                box-shadow: 0 0 0 rgba(94,230,168,0);
-            }
-            50% {
-                box-shadow: 0 0 22px rgba(94,230,168,0.18);
-            }
-        }
-
-        @keyframes architectureFloat {
-            0%,100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @media (max-width: 900px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">🌿 AERO VISION</div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="monitoring.html">Monitoring</a>
-        <a href="forecast.html">Forecast</a>
-        <a href="map.html">Map</a>
-        <a href="iot.html">IoT</a>
-        <a href="weather.html">Weather</a>
-        <a href="about.html">About</a>
-    </nav>
-</header>
-
-
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-
-        <div class="hero-badge">
-            DELHI NCR AIR INTELLIGENCE
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            🌿 <span>AERO VISION</span>
         </div>
 
-        <h1>
-            Cleaner Air.<br>
-            <span>Smarter Forecasts.</span>
-        </h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="monitoring.html">Monitoring</a>
+            <a href="forecast.html">Forecast</a>
+            <a href="map.html">NCR Map</a>
+            <a href="iot.html">IoT</a>
+            <a href="weather.html">Weather</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
 
-        <p>
-            Air Pollution–Weather Coupled Forecasting System
-            designed for real-time monitoring and 72-hour
-            air quality prediction across Delhi NCR.
-        </p>
 
-        <div class="hero-buttons">
-            <a href="monitoring.html" class="btn">
-                View Live Monitoring
-            </a>
+    <!-- HERO SECTION -->
+    <section class="hero">
 
-            <a href="forecast.html" class="btn">
-                Explore Forecast
-            </a>
-        </div>
+        <div class="hero-content">
 
-        <!-- STATS -->
-        <div class="stats-grid">
+            <p class="tag">
+                AI • IoT • WEATHER • AIR QUALITY
+            </p>
 
-            <div class="stat-card">
-                <div class="stat-number">72H</div>
-                <div class="stat-label">Forecast Horizon</div>
-            </div>
+            <h1>
+                Air Pollution–Weather
+                <span>Coupled Forecasting System</span>
+            </h1>
 
-            <div class="stat-card">
-                <div class="stat-number">5+</div>
-                <div class="stat-label">NCR Locations</div>
-            </div>
+            <p class="hero-text">
+                High-resolution air quality monitoring and 72-hour
+                pollution forecasting system designed for Delhi NCR.
+            </p>
 
-            <div class="stat-card">
-                <div class="stat-number">AI</div>
-                <div class="stat-label">Prediction Engine</div>
-            </div>
+            <div class="hero-buttons">
+                <a href="monitoring.html" class="btn primary">
+                    Live Monitoring
+                </a>
 
-            <div class="stat-card">
-                <div class="stat-number">IoT</div>
-                <div class="stat-label">Sensor Network</div>
+                <a href="forecast.html" class="btn secondary">
+                    View Forecast
+                </a>
             </div>
 
         </div>
 
-    </div>
-</section>
+    </section>
 
 
-<!-- FEATURES -->
-<section>
+    <!-- SYSTEM STATUS -->
+    <section class="section">
 
-    <div class="section-title">
-        <h2>Intelligent Air Quality System</h2>
+        <div class="section-title">
+            <p>REAL-TIME SYSTEM</p>
+            <h2>Current System Status</h2>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="card">
+                <div class="card-icon">🌫️</div>
+                <h3>AQI</h3>
+                <div class="value">--</div>
+                <p>Waiting for sensor data</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🫁</div>
+                <h3>PM2.5</h3>
+                <div class="value">--</div>
+                <p>Waiting for sensor data</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌡️</div>
+                <h3>Temperature</h3>
+                <div class="value">--</div>
+                <p>Waiting for weather data</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📡</div>
+                <h3>IoT Network</h3>
+                <div class="value status-offline">
+                    OFFLINE
+                </div>
+                <p>Sensor connection pending</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT DESCRIPTION -->
+    <section class="section dark-section">
+
+        <div class="section-title">
+            <p>OUR SOLUTION</p>
+            <h2>How AERO VISION Works</h2>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <span>01</span>
+                <h3>IoT Data Collection</h3>
+                <p>
+                    Sensors collect air-quality and environmental
+                    parameters from different locations.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>02</span>
+                <h3>Weather Integration</h3>
+                <p>
+                    Weather parameters such as temperature,
+                    humidity, wind and atmospheric conditions
+                    are combined with pollution data.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>03</span>
+                <h3>AI Forecasting</h3>
+                <p>
+                    Machine learning models analyse the coupled
+                    data to generate future pollution predictions.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>04</span>
+                <h3>72-Hour Forecast</h3>
+                <p>
+                    The system is designed to forecast AQI and
+                    major pollutants for the next 72 hours.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ARCHITECTURE -->
+    <section class="section">
+
+        <div class="section-title">
+            <p>SYSTEM ARCHITECTURE</p>
+            <h2>Data Processing Pipeline</h2>
+        </div>
+
+        <div class="architecture">
+
+            <div class="architecture-box">
+                📡
+                <strong>IoT Sensors</strong>
+                <small>Air Quality Data</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="architecture-box">
+                ☁️
+                <strong>Cloud / Database</strong>
+                <small>Data Storage</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="architecture-box">
+                🤖
+                <strong>AI Model</strong>
+                <small>XGBoost / LSTM</small>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="architecture-box">
+                📊
+                <strong>Dashboard</strong>
+                <small>72-Hour Forecast</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>Monitor. Predict. Protect.</h2>
+
         <p>
-            Combining environmental sensing, weather data and
-            machine learning for pollution forecasting.
-        </p>
-    </div>
-
-    <div class="feature-grid">
-
-        <div class="feature">
-            <div class="feature-icon">📡</div>
-            <h3>IoT Monitoring</h3>
-            <p>
-                Collect real-time environmental parameters
-                using distributed sensor nodes.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🌦️</div>
-            <h3>Weather Coupling</h3>
-            <p>
-                Integrates temperature, humidity, wind,
-                rainfall and atmospheric conditions.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🤖</div>
-            <h3>AI Forecasting</h3>
-            <p>
-                Machine learning models analyse pollution
-                and weather relationships.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">📈</div>
-            <h3>72-Hour Prediction</h3>
-            <p>
-                Provides future AQI and pollutant trends
-                for early awareness.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ARCHITECTURE -->
-<section>
-
-    <div class="section-title">
-        <h2>System Architecture</h2>
-        <p>From environmental sensors to intelligent forecasting.</p>
-    </div>
-
-    <div class="architecture">
-
-        <div class="architecture-box">
-            <span>📡</span>
-            <h3>IoT Sensors</h3>
-            <p>Pollution & Weather Data</p>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="architecture-box">
-            <span>☁️</span>
-            <h3>Cloud / Database</h3>
-            <p>Data Storage & Processing</p>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="architecture-box">
-            <span>🧠</span>
-            <h3>AI Model</h3>
-            <p>XGBoost / LSTM</p>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="architecture-box">
-            <span>📊</span>
-            <h3>Dashboard</h3>
-            <p>AQI & Forecast</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECT STATUS -->
-<section>
-
-    <div class="info-box">
-
-        <h2>🚀 Project Development</h2>
-
-        <p>
-            AERO VISION is being developed as a Delhi NCR-focused
-            air pollution and weather coupled forecasting platform.
-            IoT integration, real-time APIs and AI forecasting
-            modules will be connected during the next development stage.
+            Building a smarter air-quality forecasting system
+            for Delhi NCR.
         </p>
 
-    </div>
-
-</section>
-
-
-<!-- CTA -->
-<section>
-
-    <div class="cta">
-
-        <h2>Explore Delhi NCR Air Intelligence</h2>
-
-        <p>
-            Monitor environmental conditions and explore
-            the future of air quality forecasting.
-        </p>
-
-        <a href="about.html" class="btn">
-            About Project →
+        <a href="iot.html" class="btn primary">
+            Explore IoT Network
         </a>
 
-    </div>
-
-</section>
+    </section>
 
 
-<footer>
-    <p>© 2026 AERO VISION | Delhi NCR Air Pollution Forecasting System</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            <strong>AERO VISION</strong>
+            <p>
+                Air Pollution–Weather Coupled Forecasting System
+            </p>
+        </div>
+
+        <p>
+            © 2026 AERO VISION | SIH Project
+        </p>
+
+    </footer>
 
 
-<script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>
