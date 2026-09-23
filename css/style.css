@@ -1060,3 +1060,196 @@ body.page-exit {
         transform: translateY(0);
     }
 }
+/* =====================================
+   AERO VISION - PREMIUM MENU
+===================================== */
+
+.menu-toggle {
+    position: relative;
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    margin-left: auto;
+
+    background: rgba(99, 242, 178, 0.06);
+    border: 1px solid rgba(99, 242, 178, 0.2);
+    border-radius: 14px;
+
+    cursor: pointer;
+    z-index: 1001;
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.35s ease;
+}
+
+.menu-toggle span {
+    width: 22px;
+    height: 2px;
+
+    background: var(--green);
+    border-radius: 10px;
+
+    transition: 0.35s ease;
+    box-shadow: 0 0 8px rgba(99, 242, 178, 0.5);
+}
+
+.menu-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--green);
+    box-shadow: 0 0 25px rgba(99, 242, 178, 0.15);
+}
+
+/* Menu panel */
+
+.navbar nav {
+    position: absolute;
+
+    top: 82px;
+    right: 25px;
+
+    width: 270px;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 28, 40, 0.97),
+            rgba(4, 13, 21, 0.98)
+        );
+
+    border: 1px solid rgba(99, 242, 178, 0.18);
+    border-radius: 22px;
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55),
+        inset 0 0 30px rgba(99, 242, 178, 0.025);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-20px)
+        scale(0.92);
+
+    transform-origin: top right;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s cubic-bezier(.2,.8,.2,1),
+        visibility 0.35s;
+}
+
+/* OPEN */
+
+.navbar nav.menu-open {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+/* Menu items */
+
+.navbar nav a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 16px;
+
+    color: var(--muted);
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    transform: translateX(20px);
+    opacity: 0;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+/* Animate items after opening */
+
+.navbar nav.menu-open a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.navbar nav.menu-open a:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.navbar nav.menu-open a:nth-child(2) {
+    transition-delay: 0.10s;
+}
+
+.navbar nav.menu-open a:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.navbar nav.menu-open a:nth-child(4) {
+    transition-delay: 0.20s;
+}
+
+.navbar nav.menu-open a:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.navbar nav.menu-open a:nth-child(6) {
+    transition-delay: 0.30s;
+}
+
+.navbar nav a span {
+    width: 28px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.navbar nav a:hover {
+    color: var(--green);
+
+    background: rgba(99, 242, 178, 0.08);
+
+    transform: translateX(5px) !important;
+
+    box-shadow:
+        inset 3px 0 0 var(--green),
+        0 5px 20px rgba(99, 242, 178, 0.05);
+}
+
+/* Hamburger → X */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
