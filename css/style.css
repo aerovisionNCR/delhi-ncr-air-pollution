@@ -1,34 +1,31 @@
-/* ===== AERO VISION SAFE HOME ANIMATIONS ===== */
+/* =========================================
+   AERO VISION - ANIMATION ONLY
+   Existing layout remains unchanged
+   ========================================= */
 
-.hero {
-    position: relative;
-    overflow: hidden;
+/* Page smooth entrance */
+body {
+    animation: pageFade 0.8s ease-out;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    background: rgba(94, 230, 168, 0.08);
-    top: 10%;
-    right: -100px;
-    filter: blur(5px);
-    animation: aeroFloat 7s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    animation: aeroFade 0.9s ease-out;
-}
-
-@keyframes aeroFade {
+@keyframes pageFade {
     from {
         opacity: 0;
-        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Navbar */
+.navbar {
+    animation: navDown 0.7s ease-out;
+}
+
+@keyframes navDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -36,64 +33,201 @@
     }
 }
 
-@keyframes aeroFloat {
+/* Logo */
+.logo {
+    transition: 0.35s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 18px rgba(94, 230, 168, 0.5);
+}
+
+/* Hero */
+.hero-content {
+    animation: heroEnter 1s ease-out;
+}
+
+@keyframes heroEnter {
     from {
-        transform: translate(0, 0);
+        opacity: 0;
+        transform: translateY(35px);
     }
     to {
-        transform: translate(-30px, -25px);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.stat-card,
-.feature-card {
+/* Hero green heading */
+.hero h1 span {
+    animation: greenGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes greenGlow {
+    from {
+        text-shadow: 0 0 5px rgba(94, 230, 168, 0.15);
+    }
+    to {
+        text-shadow: 0 0 22px rgba(94, 230, 168, 0.45);
+    }
+}
+
+/* Buttons */
+.btn {
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease,
                 border-color 0.3s ease;
 }
 
-.stat-card:hover,
-.feature-card:hover {
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+/* Cards */
+.card,
+.feature,
+.parameter-card,
+.location-card,
+.device-card,
+.component-card,
+.forecast-card {
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.card:hover,
+.feature:hover,
+.parameter-card:hover,
+.location-card:hover,
+.device-card:hover,
+.component-card:hover,
+.forecast-card:hover {
     transform: translateY(-7px);
-    border-color: rgba(94, 230, 168, 0.45);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-color: #5ee6a8;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-.btn-main,
-.btn-outline {
-    transition: all 0.3s ease;
+/* Card icons */
+.card-icon,
+.location-icon,
+.device-icon,
+.component-card > span {
+    transition: transform 0.35s ease;
 }
 
-.btn-main:hover,
-.btn-outline:hover {
-    transform: translateY(-3px);
+.card:hover .card-icon,
+.location-card:hover .location-icon,
+.device-card:hover .device-icon,
+.component-card:hover > span {
+    transform: scale(1.12) rotate(-5deg);
 }
 
-.logo {
-    transition: 0.3s ease;
+/* AQI / values */
+.card .value {
+    animation: valueGlow 2.5s ease-in-out infinite alternate;
 }
 
-.logo:hover {
-    transform: scale(1.03);
+@keyframes valueGlow {
+    from {
+        text-shadow: 0 0 2px rgba(94, 230, 168, 0.1);
+    }
+    to {
+        text-shadow: 0 0 14px rgba(94, 230, 168, 0.35);
+    }
 }
 
-nav a {
-    transition: 0.25s ease;
+/* Architecture boxes */
+.architecture-box {
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-nav a:hover {
-    color: #5ee6a8;
+.architecture-box:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #5ee6a8;
+    box-shadow: 0 12px 30px rgba(94, 230, 168, 0.12);
 }
 
-/* Mobile alignment protection */
+/* Architecture arrows */
+.arrow {
+    animation: arrowPulse 1.5s ease-in-out infinite alternate;
+}
 
-@media (max-width: 600px) {
-    .hero-content {
-        width: 100%;
+@keyframes arrowPulse {
+    from {
+        opacity: 0.45;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+}
+
+/* Map markers */
+.marker-dot {
+    animation: markerPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(94, 230, 168, 0.4);
     }
 
-    .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
+    50% {
+        transform: scale(1.25);
+        box-shadow: 0 0 22px rgba(94, 230, 168, 0.7);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(94, 230, 168, 0.4);
+    }
+}
+
+/* Offline status */
+.status-dot {
+    animation: statusBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* Page header */
+.page-header {
+    animation: headerFade 0.8s ease-out;
+}
+
+@keyframes headerFade {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    animation: footerFade 1s ease-out;
+}
+
+@keyframes footerFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
