@@ -9,271 +9,175 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* HOME PAGE ANIMATIONS */
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
+        /* INDEX PAGE EXTRA STYLE */
         .hero {
             position: relative;
-            min-height: 78vh;
-            display: flex;
-            align-items: center;
             overflow: hidden;
         }
 
-        .hero::before {
+        .hero::before,
+        .hero::after {
             content: "";
             position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(94,230,168,.18), transparent 30%),
-                radial-gradient(circle at 80% 20%, rgba(60,170,255,.15), transparent 30%);
-            animation: glowMove 8s ease-in-out infinite alternate;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.18;
+            pointer-events: none;
         }
 
-        @keyframes glowMove {
-            from { transform: scale(1); }
-            to { transform: scale(1.15); }
+        .hero::before {
+            width: 300px;
+            height: 300px;
+            background: #5ee6a8;
+            top: -100px;
+            right: -80px;
+            animation: floatOrb 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            width: 250px;
+            height: 250px;
+            background: #4da6ff;
+            bottom: -100px;
+            left: -80px;
+            animation: floatOrb 7s ease-in-out infinite reverse;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            animation: heroIn 1s ease forwards;
-        }
-
-        @keyframes heroIn {
-            from {
-                opacity: 0;
-                transform: translateY(35px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid rgba(94,230,168,.45);
+            padding: 8px 16px;
+            border: 1px solid rgba(94,230,168,0.35);
             border-radius: 30px;
             color: #5ee6a8;
-            background: rgba(94,230,168,.07);
+            background: rgba(94,230,168,0.07);
             margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            50% {
-                box-shadow: 0 0 25px rgba(94,230,168,.25);
-            }
+            animation: badgePulse 2.5s infinite;
         }
 
         .hero h1 {
-            font-size: clamp(42px, 7vw, 82px);
-            line-height: 1;
-            margin-bottom: 22px;
+            font-size: clamp(40px, 6vw, 78px);
+            line-height: 1.05;
         }
 
         .hero h1 span {
             color: #5ee6a8;
-            text-shadow: 0 0 30px rgba(94,230,168,.3);
-        }
-
-        .hero p {
-            max-width: 700px;
-            font-size: 18px;
-            color: #b8c5d6;
-            line-height: 1.7;
         }
 
         .hero-buttons {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
             flex-wrap: wrap;
+            margin-top: 28px;
         }
 
-        .btn-main,
-        .btn-outline {
-            padding: 13px 22px;
-            border-radius: 10px;
+        .hero-buttons a {
             text-decoration: none;
-            transition: .3s;
-        }
-
-        .btn-main {
-            background: #5ee6a8;
-            color: #07111f;
-            font-weight: 700;
-        }
-
-        .btn-main:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(94,230,168,.3);
-        }
-
-        .btn-outline {
-            border: 1px solid #33445c;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            border-color: #5ee6a8;
-            color: #5ee6a8;
-            transform: translateY(-4px);
-        }
-
-        .live-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #ffb84d;
-            border-radius: 50%;
-            margin-right: 7px;
-            animation: blink 1.3s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: .25; }
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 18px;
-            margin-top: 35px;
+            margin-top: 50px;
         }
 
         .stat-card {
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,.08);
+            padding: 25px;
             border-radius: 18px;
-            background: rgba(255,255,255,.035);
-            backdrop-filter: blur(12px);
-            transition: .35s;
-            animation: cardIn .8s ease forwards;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            transition: 0.35s ease;
         }
 
         .stat-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(94,230,168,.5);
-            box-shadow: 0 15px 40px rgba(0,0,0,.25);
+            border-color: #5ee6a8;
+            box-shadow: 0 15px 35px rgba(94,230,168,0.12);
         }
 
-        .stat-card small {
-            color: #8493a8;
-        }
-
-        .stat-value {
-            display: block;
+        .stat-number {
             font-size: 32px;
-            font-weight: 800;
-            margin-top: 8px;
+            font-weight: 700;
             color: #5ee6a8;
         }
 
-        @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-        }
-
-        .section-title p {
-            color: #8493a8;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .feature-card {
-            padding: 28px;
-            border-radius: 20px;
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.07);
-            transition: .35s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: #5ee6a8;
+        .stat-label {
+            margin-top: 7px;
+            opacity: 0.7;
         }
 
         .feature-icon {
-            font-size: 35px;
+            font-size: 32px;
             margin-bottom: 15px;
         }
 
-        .feature-card p {
-            color: #8998ac;
-            line-height: 1.6;
+        .architecture-box {
+            animation: architectureFloat 4s ease-in-out infinite;
         }
 
-        .architecture {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 35px;
+        .architecture-box:nth-child(2) {
+            animation-delay: .4s;
         }
 
-        .arch-box {
-            padding: 18px 22px;
-            border-radius: 14px;
-            background: rgba(94,230,168,.07);
-            border: 1px solid rgba(94,230,168,.25);
-            color: #fff;
+        .architecture-box:nth-child(3) {
+            animation-delay: .8s;
         }
 
-        .arrow {
-            color: #5ee6a8;
-            font-size: 25px;
+        .architecture-box:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes floatOrb {
+            0%,100% {
+                transform: translate(0,0) scale(1);
+            }
+            50% {
+                transform: translate(-25px,25px) scale(1.12);
+            }
+        }
+
+        @keyframes badgePulse {
+            0%,100% {
+                box-shadow: 0 0 0 rgba(94,230,168,0);
+            }
+            50% {
+                box-shadow: 0 0 22px rgba(94,230,168,0.18);
+            }
+        }
+
+        @keyframes architectureFloat {
+            0%,100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         @media (max-width: 900px) {
-            .stats-grid,
-            .feature-grid {
+            .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 600px) {
-            .stats-grid,
-            .feature-grid {
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                min-height: 70vh;
+            .hero-buttons {
+                flex-direction: column;
             }
 
-            .hero h1 {
-                font-size: 45px;
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -282,34 +186,25 @@
 <body>
 
 <header class="navbar">
-    <div class="nav-container">
+    <div class="logo">🌿 AERO VISION</div>
 
-        <a href="index.html" class="logo">
-            🌿 AERO <span>VISION</span>
-        </a>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="monitoring.html">Monitoring</a>
-            <a href="forecast.html">Forecast</a>
-            <a href="map.html">Map</a>
-            <a href="iot.html">IoT</a>
-            <a href="weather.html">Weather</a>
-            <a href="about.html">About</a>
-        </nav>
-
-    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="monitoring.html">Monitoring</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="map.html">Map</a>
+        <a href="iot.html">IoT</a>
+        <a href="weather.html">Weather</a>
+        <a href="about.html">About</a>
+    </nav>
 </header>
 
 
-<main>
-
+<!-- HERO -->
 <section class="hero">
-
-    <div class="container hero-content">
+    <div class="hero-content">
 
         <div class="hero-badge">
-            <span class="live-dot"></span>
             DELHI NCR AIR INTELLIGENCE
         </div>
 
@@ -319,216 +214,191 @@
         </h1>
 
         <p>
-            AERO VISION is an Air Pollution–Weather Coupled
-            Forecasting System designed to monitor Delhi NCR air
-            quality and provide high-resolution 72-hour pollution
-            forecasting using IoT, weather data and AI.
+            Air Pollution–Weather Coupled Forecasting System
+            designed for real-time monitoring and 72-hour
+            air quality prediction across Delhi NCR.
         </p>
 
         <div class="hero-buttons">
-            <a href="monitoring.html" class="btn-main">
-                Explore Monitoring →
+            <a href="monitoring.html" class="btn">
+                View Live Monitoring
             </a>
 
-            <a href="forecast.html" class="btn-outline">
-                View Forecast
+            <a href="forecast.html" class="btn">
+                Explore Forecast
             </a>
         </div>
 
+        <!-- STATS -->
         <div class="stats-grid">
 
             <div class="stat-card">
-                <small>AIR QUALITY INDEX</small>
-                <span class="stat-value" data-aqi>--</span>
+                <div class="stat-number">72H</div>
+                <div class="stat-label">Forecast Horizon</div>
             </div>
 
             <div class="stat-card">
-                <small>PM2.5</small>
-                <span class="stat-value" data-pm25>--</span>
+                <div class="stat-number">5+</div>
+                <div class="stat-label">NCR Locations</div>
             </div>
 
             <div class="stat-card">
-                <small>TEMPERATURE</small>
-                <span class="stat-value" data-temperature>--</span>
+                <div class="stat-number">AI</div>
+                <div class="stat-label">Prediction Engine</div>
             </div>
 
             <div class="stat-card">
-                <small>IoT NETWORK</small>
-                <span class="stat-value">OFFLINE</span>
+                <div class="stat-number">IoT</div>
+                <div class="stat-label">Sensor Network</div>
             </div>
 
         </div>
 
     </div>
-
 </section>
 
 
-<section class="section">
+<!-- FEATURES -->
+<section>
 
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Intelligent Air Monitoring</h2>
-            <p>
-                One platform connecting sensors, weather and AI.
-            </p>
-        </div>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <div class="feature-icon">📡</div>
-                <h3>IoT Monitoring</h3>
-                <p>
-                    Collect environmental parameters through
-                    connected sensor nodes and ESP32 devices.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🌦️</div>
-                <h3>Weather Coupling</h3>
-                <p>
-                    Combine temperature, humidity, wind and
-                    atmospheric conditions with pollution data.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>AI Forecasting</h3>
-                <p>
-                    Machine learning models can process historical
-                    pollution and weather patterns.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔮</div>
-                <h3>72-Hour Prediction</h3>
-                <p>
-                    Forecast future AQI and pollution behaviour
-                    for early awareness and planning.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>System Architecture</h2>
-            <p>From physical sensors to intelligent forecasting.</p>
-        </div>
-
-        <div class="architecture">
-
-            <div class="arch-box">📡 IoT Sensors</div>
-
-            <div class="arrow">→</div>
-
-            <div class="arch-box">📶 ESP32</div>
-
-            <div class="arrow">→</div>
-
-            <div class="arch-box">☁️ Cloud</div>
-
-            <div class="arrow">→</div>
-
-            <div class="arch-box">🤖 AI Model</div>
-
-            <div class="arrow">→</div>
-
-            <div class="arch-box">📊 Dashboard</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Built for Delhi NCR</h2>
-
-            <p>
-                Understanding the interaction between
-                weather and air pollution.
-            </p>
-        </div>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <h3>PM2.5</h3>
-                <p>
-                    Track fine particulate pollution and its
-                    relationship with atmospheric conditions.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3>Ground-Level O₃</h3>
-                <p>
-                    Include ozone behaviour as part of the
-                    coupled air-quality analysis.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3>Inversion Layers</h3>
-                <p>
-                    Identify weather conditions that can trap
-                    pollutants close to the ground.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3>PBL Height</h3>
-                <p>
-                    Atmospheric boundary-layer information can
-                    support pollution dispersion analysis.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<footer class="footer">
-
-    <div class="container">
-
-        <h3>🌿 AERO VISION</h3>
-
+    <div class="section-title">
+        <h2>Intelligent Air Quality System</h2>
         <p>
-            Air Pollution–Weather Coupled Forecasting System
-            | Delhi NCR Focus
+            Combining environmental sensing, weather data and
+            machine learning for pollution forecasting.
         </p>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <div class="feature-icon">📡</div>
+            <h3>IoT Monitoring</h3>
+            <p>
+                Collect real-time environmental parameters
+                using distributed sensor nodes.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🌦️</div>
+            <h3>Weather Coupling</h3>
+            <p>
+                Integrates temperature, humidity, wind,
+                rainfall and atmospheric conditions.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Forecasting</h3>
+            <p>
+                Machine learning models analyse pollution
+                and weather relationships.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>72-Hour Prediction</h3>
+            <p>
+                Provides future AQI and pollutant trends
+                for early awareness.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ARCHITECTURE -->
+<section>
+
+    <div class="section-title">
+        <h2>System Architecture</h2>
+        <p>From environmental sensors to intelligent forecasting.</p>
+    </div>
+
+    <div class="architecture">
+
+        <div class="architecture-box">
+            <span>📡</span>
+            <h3>IoT Sensors</h3>
+            <p>Pollution & Weather Data</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            <span>☁️</span>
+            <h3>Cloud / Database</h3>
+            <p>Data Storage & Processing</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            <span>🧠</span>
+            <h3>AI Model</h3>
+            <p>XGBoost / LSTM</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            <span>📊</span>
+            <h3>Dashboard</h3>
+            <p>AQI & Forecast</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT STATUS -->
+<section>
+
+    <div class="info-box">
+
+        <h2>🚀 Project Development</h2>
 
         <p>
-            © 2026 AERO VISION
+            AERO VISION is being developed as a Delhi NCR-focused
+            air pollution and weather coupled forecasting platform.
+            IoT integration, real-time APIs and AI forecasting
+            modules will be connected during the next development stage.
         </p>
 
     </div>
 
+</section>
+
+
+<!-- CTA -->
+<section>
+
+    <div class="cta">
+
+        <h2>Explore Delhi NCR Air Intelligence</h2>
+
+        <p>
+            Monitor environmental conditions and explore
+            the future of air quality forecasting.
+        </p>
+
+        <a href="about.html" class="btn">
+            About Project →
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p>© 2026 AERO VISION | Delhi NCR Air Pollution Forecasting System</p>
 </footer>
 
 
