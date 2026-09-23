@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AERO VISION | NCR Map</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🌿 <span>AERO VISION</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="monitoring.html">Monitoring</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="map.html" class="active">NCR Map</a>
+        <a href="iot.html">IoT</a>
+        <a href="weather.html">Weather</a>
+        <a href="about.html">About</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <p>DELHI NCR</p>
+
+        <h1>Air Quality Map</h1>
+
+        <p>
+            Location-based air-quality monitoring across
+            Delhi National Capital Region.
+        </p>
+
+    </section>
+
+
+    <!-- MAP -->
+
+    <section class="section">
+
+        <div class="map-panel">
+
+            <div class="map-title">
+
+                <div>
+                    <h2>Delhi NCR Monitoring Network</h2>
+
+                    <p>
+                        Live sensor locations will appear
+                        after IoT deployment.
+                    </p>
+                </div>
+
+                <span class="map-status">
+                    ● OFFLINE
+                </span>
+
+            </div>
+
+
+            <div class="ncr-map">
+
+                <!-- DELHI -->
+
+                <div class="map-marker marker-delhi">
+
+                    <span class="marker-dot"></span>
+
+                    <div class="marker-label">
+                        <strong>Delhi</strong>
+                        <small>AQI: --</small>
+                    </div>
+
+                </div>
+
+
+                <!-- NOIDA -->
+
+                <div class="map-marker marker-noida">
+
+                    <span class="marker-dot"></span>
+
+                    <div class="marker-label">
+                        <strong>Noida</strong>
+                        <small>AQI: --</small>
+                    </div>
+
+                </div>
+
+
+                <!-- GURUGRAM -->
+
+                <div class="map-marker marker-gurugram">
+
+                    <span class="marker-dot"></span>
+
+                    <div class="marker-label">
+                        <strong>Gurugram</strong>
+                        <small>AQI: --</small>
+                    </div>
+
+                </div>
+
+
+                <!-- FARIDABAD -->
+
+                <div class="map-marker marker-faridabad">
+
+                    <span class="marker-dot"></span>
+
+                    <div class="marker-label">
+                        <strong>Faridabad</strong>
+                        <small>AQI: --</small>
+                    </div>
+
+                </div>
+
+
+                <!-- GHAZIABAD -->
+
+                <div class="map-marker marker-ghaziabad">
+
+                    <span class="marker-dot"></span>
+
+                    <div class="marker-label">
+                        <strong>Ghaziabad</strong>
+                        <small>AQI: --</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGEND -->
+
+            <div class="map-legend">
+
+                <div>
+                    <span class="legend-dot"></span>
+                    Sensor location
+                </div>
+
+                <div>
+                    <span class="legend-line"></span>
+                    IoT monitoring zone
+                </div>
+
+                <div>
+                    <strong>--</strong>
+                    No live data
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION STATUS -->
+
+    <section class="section dark-section">
+
+        <div class="section-title">
+
+            <p>MONITORING LOCATIONS</p>
+
+            <h2>NCR Sensor Stations</h2>
+
+        </div>
+
+
+        <div class="location-grid">
+
+            <div class="location-card">
+
+                <div class="location-icon">📍</div>
+
+                <h3>Delhi</h3>
+
+                <p>Central monitoring zone</p>
+
+                <strong>AQI: --</strong>
+
+                <span>Waiting for sensor</span>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">📍</div>
+
+                <h3>Noida</h3>
+
+                <p>Eastern NCR zone</p>
+
+                <strong>AQI: --</strong>
+
+                <span>Waiting for sensor</span>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">📍</div>
+
+                <h3>Gurugram</h3>
+
+                <p>Southern NCR zone</p>
+
+                <strong>AQI: --</strong>
+
+                <span>Waiting for sensor</span>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">📍</div>
+
+                <h3>Ghaziabad</h3>
+
+                <p>Eastern NCR zone</p>
+
+                <strong>AQI: --</strong>
+
+                <span>Waiting for sensor</span>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-icon">📍</div>
+
+                <h3>Faridabad</h3>
+
+                <p>Southeastern NCR zone</p>
+
+                <strong>AQI: --</strong>
+
+                <span>Waiting for sensor</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFO -->
+
+    <section class="info-box">
+
+        <div class="info-icon">🗺️</div>
+
+        <div>
+
+            <h3>Live Map Integration</h3>
+
+            <p>
+                The map can later be connected to real GPS-enabled
+                IoT sensor locations and live AQI data through the
+                backend API.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>AERO VISION</strong>
+
+        <p>
+            Air Pollution–Weather Coupled Forecasting System
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AERO VISION | SIH Project
+    </p>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
