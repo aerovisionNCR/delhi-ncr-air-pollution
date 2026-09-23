@@ -155,6 +155,27 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         }
+        // =====================================
+// HAMBURGER MENU
+// =====================================
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("menu-open");
+    });
+
+    // Close menu after selecting a page
+    mainNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            mainNav.classList.remove("menu-open");
+        });
+    });
+
+}
 
     });
 
