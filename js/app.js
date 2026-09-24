@@ -230,3 +230,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+// =====================================
+// PAGE TO PAGE ANIMATION
+// =====================================
+
+const links = document.querySelectorAll("a[href]");
+
+links.forEach(link => {
+
+    const url = link.getAttribute("href");
+
+    if (
+        url &&
+        url.endsWith(".html") &&
+        !url.startsWith("http") &&
+        !url.startsWith("#")
+    ) {
+
+        link.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            const target = this.href;
+
+            if (menuToggle && mainNav) {
+                menuToggle.classList.remove("active");
+                mainNav.classList.remove("menu-open");
+            }
+
+            document.body.classList.add("page-exit");
+
+            setTimeout(() => {
+                window.location.href = target;
+            }, 400);
+
+        });
+    }
+});
+
+
+// =====================================
+// FIX BROWSER BACK BUTTON
+// =====================================
+
+window.addEventListener("pageshow", () => {
+
+    document.body.classList.remove("page-exit");
+
+    if (menuToggle && mainNav) {
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("menu-open");
+    }
+
+});
