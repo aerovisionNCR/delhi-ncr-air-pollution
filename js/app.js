@@ -1,11 +1,15 @@
+// =====================================
 // AERO VISION
 // Air Pollution - Weather Coupled Forecasting System
-
+// =====================================
 
 const API_URL = "";
 
 
-// Get sensor data from backend API
+// =====================================
+// GET SENSOR DATA
+// =====================================
+
 async function getSensorData() {
 
     if (!API_URL) {
@@ -31,7 +35,10 @@ async function getSensorData() {
 }
 
 
-// Update dashboard values
+// =====================================
+// UPDATE DASHBOARD
+// =====================================
+
 function updateDashboard(data) {
 
     if (!data) {
@@ -98,10 +105,14 @@ function updateDashboard(data) {
         elements.wind.textContent =
             data.wind + " km/h";
     }
+
 }
 
 
-// Check backend connection
+// =====================================
+// CHECK BACKEND CONNECTION
+// =====================================
+
 async function checkSystem() {
 
     const data = await getSensorData();
@@ -111,26 +122,71 @@ async function checkSystem() {
 }
 
 
-// Start application
+// =====================================
+// PAGE LOAD
+// =====================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Start sensor check
     checkSystem();
 
-    // Check for new sensor data every 30 seconds
+    // Check every 30 seconds
     setInterval(checkSystem, 30000);
 
-});
-// =====================================
-// AERO VISION PAGE TRANSITION
-// =====================================
 
-document.addEventListener("DOMContentLoaded", () => {
+    // =====================================
+    // HAMBURGER MENU
+    // =====================================
 
-    const links = document.querySelectorAll("a[href]");
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const mainNav =
+        document.getElementById("mainNav");
+
+
+    if (menuToggle && mainNav) {
+
+        // Open / Close menu
+        menuToggle.addEventListener("click", () => {
+
+            menuToggle.classList.toggle("active");
+
+            mainNav.classList.toggle("menu-open");
+
+        });
+
+
+        // Close menu when selecting a page
+        mainNav.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menuToggle.classList.remove("active");
+
+                mainNav.classList.remove("menu-open");
+
+            });
+
+        });
+
+    }
+
+
+    // =====================================
+    // PAGE TO PAGE ANIMATION
+    // =====================================
+
+    const links =
+        document.querySelectorAll("a[href]");
+
 
     links.forEach(link => {
 
-        const url = link.getAttribute("href");
+        const url =
+            link.getAttribute("href");
+
 
         // Only internal HTML pages
         if (
@@ -146,65 +202,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const target = this.href;
 
+
+                // Close menu
+                if (menuToggle && mainNav) {
+
+                    menuToggle.classList.remove("active");
+
+                    mainNav.classList.remove("menu-open");
+
+                }
+
+
+                // Page exit animation
                 document.body.classList.add("page-exit");
 
+
                 setTimeout(() => {
+
                     window.location.href = target;
+
                 }, 400);
 
             });
 
         }
-        // =====================================
-// HAMBURGER MENU
-// =====================================
-
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-
-if (menuToggle && mainNav) {
-
-    menuToggle.addEventListener("click", () => {
-        mainNav.classList.toggle("menu-open");
-    });
-
-    // Close menu after selecting a page
-    mainNav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainNav.classList.remove("menu-open");
-        });
-    });
-
-}
 
     });
 
 });
-// =====================================
-// AERO VISION PREMIUM MENU
-// =====================================
-
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-
-if (menuToggle && mainNav) {
-
-    menuToggle.addEventListener("click", () => {
-
-        menuToggle.classList.toggle("active");
-        mainNav.classList.toggle("menu-open");
-
-    });
-
-    mainNav.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            menuToggle.classList.remove("active");
-            mainNav.classList.remove("menu-open");
-
-        });
-
-    });
-
-}
