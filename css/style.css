@@ -1253,3 +1253,46 @@ body.page-exit {
 .menu-toggle.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+/* ================================
+   AERO VISION MENU FIX
+================================ */
+
+#mainNav.menu-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+}
+
+#mainNav.menu-open a {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    transform: translateX(0) !important;
+}
+
+/* Keep menu items in correct order */
+#mainNav a:nth-child(1) {
+    order: 1;
+}
+
+#mainNav a:nth-child(2) {
+    order: 2;
+}
+
+#mainNav a:nth-child(3) {
+    order: 3;
+}
+
+#mainNav a:nth-child(4) {
+    order: 4;
+}
+
+#mainNav a:nth-child(5) {
+    order: 5;
+}
+
+#mainNav a:nth-child(6) {
+    order: 6;
+}
