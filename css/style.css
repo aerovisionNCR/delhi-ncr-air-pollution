@@ -1296,3 +1296,72 @@ body.page-exit {
 #mainNav a:nth-child(6) {
     order: 6;
 }
+/* =====================================
+   WEATHER HOURLY FORECAST
+   ===================================== */
+
+.weather-hourly {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 2px 20px;
+}
+
+.weather-hour-card {
+    min-width: 145px;
+    padding: 20px 15px;
+    text-align: center;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+.weather-hour-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--green);
+}
+
+.weather-hour-time {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.weather-hour-icon {
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.weather-hour-temp {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.weather-hour-info {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.weather-loading {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+}
+
+
+/* WEATHER MOBILE */
+
+@media (max-width: 700px) {
+
+    .weather-hourly {
+        gap: 10px;
+    }
+
+    .weather-hour-card {
+        min-width: 125px;
+    }
+}
