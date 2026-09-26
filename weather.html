@@ -17,7 +17,14 @@
         🌿 <span>AERO VISION</span>
     </div>
 
-    <nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="mainNav">
+
         <a href="index.html">Home</a>
         <a href="monitoring.html">Monitoring</a>
         <a href="forecast.html">Forecast</a>
@@ -25,12 +32,15 @@
         <a href="iot.html">IoT</a>
         <a href="weather.html" class="active">Weather</a>
         <a href="about.html">About</a>
+
     </nav>
 
 </header>
 
 
 <main>
+
+    <!-- PAGE HEADER -->
 
     <section class="page-header">
 
@@ -46,6 +56,8 @@
     </section>
 
 
+    <!-- WEATHER STATUS -->
+
     <section class="section">
 
         <div class="data-status">
@@ -55,10 +67,14 @@
                 Weather Data
             </div>
 
-            <strong>WAITING FOR DATA</strong>
+            <strong id="weatherStatus">
+                CONNECTING...
+            </strong>
 
         </div>
 
+
+        <!-- CURRENT WEATHER -->
 
         <div class="card-grid">
 
@@ -68,7 +84,11 @@
 
                 <h3>Temperature</h3>
 
-                <div class="value">--</div>
+                <div
+                    class="value"
+                    id="weatherTemperature">
+                    --
+                </div>
 
                 <p>°C</p>
 
@@ -81,7 +101,11 @@
 
                 <h3>Humidity</h3>
 
-                <div class="value">--</div>
+                <div
+                    class="value"
+                    id="weatherHumidity">
+                    --
+                </div>
 
                 <p>%</p>
 
@@ -94,7 +118,11 @@
 
                 <h3>Wind Speed</h3>
 
-                <div class="value">--</div>
+                <div
+                    class="value"
+                    id="weatherWind">
+                    --
+                </div>
 
                 <p>km/h</p>
 
@@ -107,9 +135,15 @@
 
                 <h3>Wind Direction</h3>
 
-                <div class="value">--</div>
+                <div
+                    class="value"
+                    id="weatherWindDirection">
+                    --
+                </div>
 
-                <p>Direction</p>
+                <p id="weatherWindDegree">
+                    Direction
+                </p>
 
             </div>
 
@@ -117,6 +151,8 @@
 
     </section>
 
+
+    <!-- ATMOSPHERIC CONDITIONS -->
 
     <section class="section dark-section">
 
@@ -131,13 +167,19 @@
 
         <div class="parameter-grid">
 
+
             <div class="parameter-card">
 
                 <span>☁️</span>
 
                 <div>
+
                     <h3>Cloud Cover</h3>
-                    <strong>-- %</strong>
+
+                    <strong id="weatherCloud">
+                        -- %
+                    </strong>
+
                 </div>
 
             </div>
@@ -148,8 +190,13 @@
                 <span>🌧️</span>
 
                 <div>
+
                     <h3>Rainfall</h3>
-                    <strong>-- mm</strong>
+
+                    <strong id="weatherRain">
+                        -- mm
+                    </strong>
+
                 </div>
 
             </div>
@@ -160,8 +207,13 @@
                 <span>☀️</span>
 
                 <div>
+
                     <h3>Solar Radiation</h3>
-                    <strong>-- W/m²</strong>
+
+                    <strong id="weatherSolar">
+                        -- W/m²
+                    </strong>
+
                 </div>
 
             </div>
@@ -172,8 +224,13 @@
                 <span>🌬️</span>
 
                 <div>
+
                     <h3>Atmospheric Pressure</h3>
-                    <strong>-- hPa</strong>
+
+                    <strong id="weatherPressure">
+                        -- hPa
+                    </strong>
+
                 </div>
 
             </div>
@@ -184,8 +241,13 @@
                 <span>🌫️</span>
 
                 <div>
+
                     <h3>Visibility</h3>
-                    <strong>-- km</strong>
+
+                    <strong id="weatherVisibility">
+                        -- km
+                    </strong>
+
                 </div>
 
             </div>
@@ -196,16 +258,50 @@
                 <span>🔄</span>
 
                 <div>
+
                     <h3>PBL Height</h3>
-                    <strong>-- m</strong>
+
+                    <strong id="weatherPBL">
+                        -- m
+                    </strong>
+
                 </div>
 
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- HOURLY FORECAST -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <p>SHORT TERM FORECAST</p>
+
+            <h2>Next 12 Hours</h2>
+
+        </div>
+
+
+        <div
+            class="weather-hourly"
+            id="hourlyWeather">
+
+            <div class="weather-loading">
+                Loading hourly weather...
             </div>
 
         </div>
 
     </section>
 
+
+    <!-- COUPLED FORECASTING -->
 
     <section class="section">
 
@@ -280,18 +376,23 @@
     </section>
 
 
+    <!-- API INFORMATION -->
+
     <section class="info-box">
 
         <div class="info-icon">🌦️</div>
 
         <div>
 
-            <h3>Weather API Integration Pending</h3>
+            <h3 id="apiTitle">
+                Weather API Connected
+            </h3>
 
-            <p>
-                Real weather values will appear after the weather
-                data source and backend API are connected to
-                the forecasting system.
+            <p id="apiMessage">
+
+                Live weather data is being retrieved from
+                Open-Meteo for Delhi NCR.
+
             </p>
 
         </div>
